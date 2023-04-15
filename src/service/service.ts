@@ -6,20 +6,28 @@ export const handleLogin = async (data: any) => {
   console.log('Logged in as:');
   const email = data.email;
   const password = data.password;
-  await auth()
-    .signInWithEmailAndPassword(email, password)
-    .then(userCredential => {
-      // Signed in
-      const user = userCredential.user;
-       AsyncStorage.setItem('email',  user.email!);
-      console.log('Logged in as:', user.email);
-      return true;
-    })
-    .catch((error: any) => {
+  try {
+  await  auth()
+    .signInWithEmailAndPassword(email, password);
+    return true;
+  } catch (error:any) {
+    console.log('Error:', error.message);
+    return false;
+  }
+  // await auth()
+  //   .signInWithEmailAndPassword(email, password)
+  //   .then((userCredential) => {
+    
+  //     const user = userCredential.user;
+  //     // AsyncStorage.setItem('email',  user.email!);
+  //     console.log('Logged in as:', user.email);
+  //     return true;
+  //   })
+  //   .catch((error: any) => {
      
-      console.log('Error:', error.message);
-      return false;
-    });
+  //     console.log('Error:', error.message);
+  //     return false;
+  //   });
 };
 
 export const handleSignUp = async (data: any) => {

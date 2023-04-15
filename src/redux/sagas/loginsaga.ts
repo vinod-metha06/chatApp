@@ -5,11 +5,11 @@ import { dispatchLogged, dispatchLogin, dispatchLoginError, dispatchLoginIn } fr
 
 
 export default function* loginSaga(action:any):any{
-    console.log("called at saga")
+    console.log("called at saga before api calling","saga")
 yield put(dispatchLoginIn());
 try {
   const response=  yield handleLogin(action.payload);
-    console.log("called at s",response)
+   // console.log("called at saga response after api res",response)
     yield put(dispatchLogged(response));
 } catch (error) {
     yield put(dispatchLoginError());

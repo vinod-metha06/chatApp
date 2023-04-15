@@ -14,12 +14,14 @@ export const loginReducer=(state=initialState,action:Action)=>{
     switch (action.type) {
 
         case ChatAction.LOGGING_IN:
+           
             return{
                 ...state,
                 isLoading:true,
                 
             }
         case ChatAction.LOGGED:
+           
             const res=action.payload?ChatAction.SUCCESS:ChatAction.FAIL;
             return{
                 ...state,
@@ -27,6 +29,7 @@ export const loginReducer=(state=initialState,action:Action)=>{
                 data:res
             }   
         case ChatAction.LOGIN_ERROR:
+
             const err=action.payload?ChatAction.SUCCESS:ChatAction.FAIL;
                 return{
                     ...state,

@@ -30,17 +30,24 @@ const LoginScreen: React.FC<LoginProps> = () => {
   const navigation = useNavigation();
   const response = useSelector((state: State) => state.loginReducer);
 
-  const handleLogin = () => {
+  const handleLogin =  () => {
     dispatch(dispatchLogin({email: email, password: password}));
-    if (response.data == ChatAction.SUCCESS) {
-      navigation.navigate('Home');
-    } else if (response.data == ChatAction.FAIL) {
-      Alert.alert('Inavalid Credentials');
+
+    console.log(response.data, 'loginscreen');
+    console.log(response.isLoading, 'loginscreen');
+    
+    if (!response.isLoading) {
+      if (response.data == ChatAction.SUCCESS) {
+        navigation.navigate('Home');
+      } else if (response.data == ChatAction.FAIL) {
+        Alert.alert('Inavalid Credentials');
+      }
     }
   };
 
+ 
   if (response.isLoading) {
-    <ActivityIndicator size="large" color="#0000ff" />;
+    return <ActivityIndicator size="large" color="#0000ff" />;
   }
 
   return (

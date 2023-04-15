@@ -26,7 +26,7 @@ function Navigation() {
       }
     });
   }, []);
-  console.log(isUserLoggedIn);
+  //console.log(isUserLoggedIn);
   if (isUserLoggedIn === null) {
     return null;
   } else if (isUserLoggedIn === true) {
