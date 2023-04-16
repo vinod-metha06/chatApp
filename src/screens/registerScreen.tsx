@@ -1,7 +1,8 @@
 import { useNavigation } from '@react-navigation/native';
 import React, {  useState } from 'react';
-import { View, TextInput, Button, Alert, TouchableOpacity, Text, StyleSheet } from 'react-native';
+import { View, TextInput, Button, Alert, TouchableOpacity, Text, StyleSheet, ActivityIndicator } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
+import { LoadingBar } from '../components/LoadingBar';
 import { ChatAction } from '../constants/actionConstants';
 import { dispatchRegister } from '../redux/action';
 import Reducer from '../types/reducer';
@@ -29,14 +30,20 @@ const RegisterScreen = () => {
     }
 
     dispatch( dispatchRegister({name:name,email:email,password:password}));
-    if (response.data == ChatAction.SUCCESS) {
-      navigation.navigate('Home');
-    } else if (response.data == ChatAction.FAIL) {
-      Alert.alert('Inavalid Credentials');
-    }
+    // if (response.data == ChatAction.SUCCESS) {
+    //   navigation.navigate('HomeScreen');
+    // } else if (response.data == ChatAction.FAIL) {
+    //   Alert.alert('Inavalid Credentials');
+    // }
   };
 
- 
+  if (response.isLoading) {
+    return <LoadingBar/>;
+  }
+
+  if (response.data!= "" && response.data !=ChatAction.FAIL) {
+    navigation.navigate('HomeScreen');
+ }
 
   return (
     <View style={styles.container}>

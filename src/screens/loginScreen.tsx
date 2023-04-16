@@ -10,6 +10,7 @@ import {
   Alert,
 } from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
+import { LoadingBar } from '../components/LoadingBar';
 import {ChatAction} from '../constants/actionConstants';
 import {dispatchLogin} from '../redux/action';
 import Reducer from '../types/reducer';
@@ -33,22 +34,28 @@ const LoginScreen: React.FC<LoginProps> = () => {
   const handleLogin =  () => {
     dispatch(dispatchLogin({email: email, password: password}));
 
-    console.log(response.data, 'loginscreen');
-    console.log(response.isLoading, 'loginscreen');
+     console.log(response.data, 'loginscreen');
+    // console.log(response.isLoading, 'loginscreen');
     
-    if (!response.isLoading) {
-      if (response.data == ChatAction.SUCCESS) {
-        navigation.navigate('Home');
-      } else if (response.data == ChatAction.FAIL) {
-        Alert.alert('Inavalid Credentials');
-      }
-    }
-  };
+    // if (!response.isLoading) {
+    //   if (response.data == ChatAction.SUCCESS) {
+    //     navigation.navigate('HomeScreen');
+    //   } else if (response.data == ChatAction.FAIL) {
+    //     Alert.alert('Inavalid Credentials');
+    //   }
+    // }
+  }
 
  
   if (response.isLoading) {
-    return <ActivityIndicator size="large" color="#0000ff" />;
+    return <LoadingBar/>;
   }
+
+  if (response.data!= "" && response.data !=ChatAction.FAIL) {
+     navigation.navigate('HomeScreen');
+  }
+
+
 
   return (
     <View style={styles.container}>
