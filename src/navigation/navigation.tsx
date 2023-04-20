@@ -22,6 +22,7 @@ import {getData} from '../utils/localdata';
 import {authReducer, authState} from '../redux/reducer/authReducer';
 import {navigationRef} from './rootNavigation';
 import { EcomAction } from '../constants/actionConstants';
+import SplashScreen from '../components/SplashScreen';
 
 const Stack = createNativeStackNavigator();
 export const navigationContainerRef = createNavigationContainerRef();
@@ -46,7 +47,7 @@ function Navigation() {
   }, []);
 
   if (authstate.loading) {
-    return <ActivityIndicator />;
+    return <SplashScreen/>;
   }
 
   if (authstate.authToken != null) {
