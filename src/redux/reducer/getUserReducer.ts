@@ -1,4 +1,4 @@
-import { ChatAction } from "../../constants/actionConstants";
+import { EcomAction } from "../../constants/actionConstants";
 import Action from "../../types/action";
 import Reducer from "../../types/reducer";
 
@@ -13,14 +13,14 @@ export const getUserReducer=(state=initialState,action:Action)=>{
 
     switch (action.type) {
 
-        case ChatAction.GETUSER_LODING:
+        case EcomAction.GETUSER_LODING:
            
             return{
                 ...state,
                 isLoading:true,
                 
             }
-        case ChatAction.GETUSER_LODED:
+        case EcomAction.GETUSER_LODED:
            
            
             return{
@@ -28,7 +28,7 @@ export const getUserReducer=(state=initialState,action:Action)=>{
                 isLoading:false,
                 data:action.payload
             }   
-        case ChatAction.GETUSER_LODING_ERROR:
+        case EcomAction.GETUSER_LODING_ERROR:
 
           
                 return{

@@ -1,4 +1,4 @@
-import { ChatAction } from "../../constants/actionConstants";
+import { EcomAction } from "../../constants/actionConstants";
 import Action from "../../types/action";
 import Reducer from "../../types/reducer";
 
@@ -13,21 +13,21 @@ export const registerReducer=(state=initialState,action:Action)=>{
 
     switch (action.type) {
 
-        case ChatAction.REGISTERING:
+        case EcomAction.REGISTERING:
             return{
                 ...state,
                 isLoading:true,
                 
             }
-        case ChatAction.REGISTERED:
-            const res=action.payload?ChatAction.SUCCESS:ChatAction.FAIL;
+        case EcomAction.REGISTERED:
+            const res=action.payload?EcomAction.SUCCESS:EcomAction.FAIL;
             return{
                 ...state,
                 isLoading:false,
                 data:res
             }   
-        case ChatAction.REGISTRATION_ERROR:
-            const err=action.payload?ChatAction.SUCCESS:ChatAction.FAIL;
+        case EcomAction.REGISTRATION_ERROR:
+            const err=action.payload?EcomAction.SUCCESS:EcomAction.FAIL;
                 return{
                     ...state,
                     isLoading:false,

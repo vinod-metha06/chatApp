@@ -1,4 +1,4 @@
-import { ChatAction } from "../../constants/actionConstants";
+import { EcomAction } from "../../constants/actionConstants";
 import Action from "../../types/action";
 import Reducer from "../../types/reducer";
 
@@ -13,24 +13,24 @@ export const loginReducer=(state=initialState,action:Action)=>{
 
     switch (action.type) {
 
-        case ChatAction.LOGGING_IN:
+        case EcomAction.LOGGING_IN:
            
             return{
                 ...state,
                 isLoading:true,
                 
             }
-        case ChatAction.LOGGED:
+        case EcomAction.LOGGED:
            
-            const res=action.payload?ChatAction.SUCCESS:ChatAction.FAIL;
+            const res=action.payload?EcomAction.SUCCESS:EcomAction.FAIL;
             return{
                 ...state,
                 isLoading:false,
                 data:res
             }   
-        case ChatAction.LOGIN_ERROR:
+        case EcomAction.LOGIN_ERROR:
 
-            const err=action.payload?ChatAction.SUCCESS:ChatAction.FAIL;
+            const err=action.payload?EcomAction.SUCCESS:EcomAction.FAIL;
                 return{
                     ...state,
                     isLoading:false,

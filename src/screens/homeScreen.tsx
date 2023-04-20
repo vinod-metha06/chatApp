@@ -81,7 +81,7 @@ const HomeScreen = () => {
  
 
   useEffect(() => {
-    console.log(data);
+    //console.log(data);
   }, [data.isLoading]);
 
   return (

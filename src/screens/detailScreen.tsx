@@ -55,21 +55,21 @@ const DetailsScreen = ({route}) => {
   );
 
   useEffect(() => {
-    const check = async () => {
-      const value = await getData('email');
-      const cartItemCheck = {
-        id: id,
-        email: value,
-      };
-     
-      const r = await alreadyAddToCartAPI(cartItemCheck);
-      setAlreadyAdded(r);
-    };
+  
     check();
- return() =>  check();
+ //return() =>  check();
   }, []);
 
-
+  const check = async () => {
+    const value = await getData('email');
+    const cartItemCheck = {
+      id: id,
+      email: value,
+    };
+   
+    const res = await alreadyAddToCartAPI(cartItemCheck);
+    setAlreadyAdded(res);
+  };
   const handleOnPress = async () => {
     const value = await getData('email');
     const cartItem = {
@@ -84,15 +84,13 @@ const DetailsScreen = ({route}) => {
     if (value != null) {
       console.log('adding', value);
       dispatch(dispatchAddToCart(cartItem));
+      check();
     } else {
       navigation.navigate('login');
     }
   };
 
-  // if (response.data == true) {
-  //   showSnackbar('Added to Cart');
-  //   //dispatch(dispatchAddToCartLoading());
-  // }
+ 
   return (
     <ScrollView>
       <View style={styles.container}>

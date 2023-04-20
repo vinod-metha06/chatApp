@@ -1,5 +1,5 @@
-import React, {useEffect, useState} from 'react';
-import {View, Image, Text, Pressable} from 'react-native';
+import React, {useEffect, useReducer, useState} from 'react';
+import {View, Image, Text, Pressable, ActivityIndicator} from 'react-native';
 import {
   createNavigationContainerRef,
   NavigationContainer,
@@ -18,39 +18,56 @@ import {Icon} from 'react-native-elements';
 import CategoriesScreen from '../screens/categoriesScreen';
 import {CartIcon, UserIcon} from '../components/icons';
 import AccountScreen from '../screens/accountScreen';
+import {getData} from '../utils/localdata';
+import {authReducer, authState} from '../redux/reducer/authReducer';
+import {navigationRef} from './rootNavigation';
+import { EcomAction } from '../constants/actionConstants';
 
 const Stack = createNativeStackNavigator();
 export const navigationContainerRef = createNavigationContainerRef();
 
 function Navigation() {
-  const [isUserLoggedIn, setUserLoggedIn] = React.useState<boolean>();
-  const [routeName, setrouteName] = React.useState<string>();
-  //  let routeName;
+  const [authstate, dispatch] = useReducer(authReducer, authState);
+  let routeName;
 
   useEffect(() => {
-    AsyncStorage.getItem('email').then(value => {
-      console.log(value, 'login value');
-      if (value == null) {
-        console.log('login value null');
-
-        setrouteName('Login');
+    const getUserDetail = async () => {
+      const value = await getData('email');
+      if (value == null || value == undefined) {
+        routeName = 'Login';
+        dispatch({type: EcomAction.AUTH_TOKEN_NULL});
       }
       if (value != null) {
-        console.log('login value true');
-        setrouteName('HomeScreen');
+        routeName = 'HomeScreen';
+        dispatch({type: EcomAction.AUTH_TOKEN, payload: value});
       }
-    });
+    };
+    getUserDetail();
   }, []);
 
+  if (authstate.loading) {
+    return <ActivityIndicator />;
+  }
+
+  if (authstate.authToken != null) {
+    console.log(authstate.authToken);
+  }
+
   return (
-    <NavigationContainer>
-      <Stack.Navigator initialRouteName={routeName}>
+    <NavigationContainer ref={navigationRef}>
+      <Stack.Navigator
+        initialRouteName={authstate.authToken == null ? 'Login' : 'HomeScreen'}>
         <Stack.Screen
           name="HomeScreen"
           component={HomeScreen}
           options={({route, navigation}) => ({
             headerRight: props => (
-              <View style={{flexDirection: 'row',justifyContent: 'space-between', marginLeft: 100}}>
+              <View
+                style={{
+                  flexDirection: 'row',
+                  justifyContent: 'space-between',
+                  marginLeft: 100,
+                }}>
                 <CartIcon {...props} navigation={navigation} />
                 <UserIcon {...props} navigation={navigation} />
               </View>

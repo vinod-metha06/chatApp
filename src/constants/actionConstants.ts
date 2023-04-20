@@ -1,7 +1,10 @@
-export enum ChatAction{
+export enum EcomAction{
 
     SUCCESS='SUCCESS',
     FAIL="FAIL",
+
+    AUTH_TOKEN_NULL='AUTH_TOKEN_NULL',
+    AUTH_TOKEN='AUTH_TOKEN',
     
 
     LOGIN='LOGIN',

@@ -10,8 +10,8 @@ import {
   Alert,
 } from 'react-native';
 import {useDispatch, useSelector} from 'react-redux';
-import { LoadingBar } from '../components/LoadingBar';
-import {ChatAction} from '../constants/actionConstants';
+import {LoadingBar} from '../components/LoadingBar';
+import {EcomAction} from '../constants/actionConstants';
 import {dispatchLogin} from '../redux/action';
 import Reducer from '../types/reducer';
 //import { dispatchLogin } from '../redux/actions';
@@ -31,31 +31,13 @@ const LoginScreen: React.FC<LoginProps> = () => {
   const navigation = useNavigation();
   const response = useSelector((state: State) => state.loginReducer);
 
-  const handleLogin =  () => {
+  const handleLogin = () => {
     dispatch(dispatchLogin({email: email, password: password}));
+  };
 
-     console.log(response.data, 'loginscreen');
-    // console.log(response.isLoading, 'loginscreen');
-    
-    // if (!response.isLoading) {
-    //   if (response.data == ChatAction.SUCCESS) {
-    //     navigation.navigate('HomeScreen');
-    //   } else if (response.data == ChatAction.FAIL) {
-    //     Alert.alert('Inavalid Credentials');
-    //   }
-    // }
-  }
-
- 
   if (response.isLoading) {
-    return <LoadingBar/>;
+    return <LoadingBar />;
   }
-
-  if (response.data!= "" && response.data !=ChatAction.FAIL) {
-     navigation.navigate('HomeScreen');
-  }
-
-
 
   return (
     <View style={styles.container}>

@@ -1,4 +1,4 @@
-import { ChatAction } from "../../constants/actionConstants";
+import { EcomAction } from "../../constants/actionConstants";
 import Action from "../../types/action";
 import Reducer from "../../types/reducer";
 
@@ -13,21 +13,21 @@ export const getCategoriesReducer=(state=initialState,action:Action)=>{
 
     switch (action.type) {
 
-        case ChatAction.GETCATEGORIES_LODING:
+        case EcomAction.GETCATEGORIES_LODING:
            
             return{
                 ...state,
                 isLoading:true,
                 
             }
-        case ChatAction.GETCATEGORIES_LODED:
+        case EcomAction.GETCATEGORIES_LODED:
            
             return{
                 ...state,
                 isLoading:false,
                 data:action.payload
             }   
-        case ChatAction.GETCATEGORIES_LODING_ERROR:
+        case EcomAction.GETCATEGORIES_LODING_ERROR:
 
                 return{
                     ...state,

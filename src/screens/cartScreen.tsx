@@ -29,20 +29,19 @@ const CartScreen = () => {
 
   const data = useSelector((state: State) => state.getCartItemReducer);
   const [cartItems, setCartItems] = useState<[]>([]);
-  const [r, setr] = useState<boolean>();
 
   let cartList = [];
   let totalPrice = 0;
 
   useEffect(() => {
-    const getUserDetail = async () => {
-      const value = await getData('email');
-      dispatch(dispatchGetCartItem(value));
-    };
     getUserDetail();
-  }, [r]);
+  }, []);
 
-  const updateInApi = async (id, qty) => {
+  const getUserDetail = async () => {
+    const value = await getData('email');
+    dispatch(dispatchGetCartItem(value));
+  };
+  const updateInApi = async (id: any, qty: any) => {
     const data = {
       id: id,
       qty: qty,
@@ -50,16 +49,14 @@ const CartScreen = () => {
     await updateQty(data);
   };
 
-  const removeInApi = async id => {
-    await removeCartItem(id);
-  };
+  const removeInApi = async (id: string) => await removeCartItem(id);
 
   const handleRemoveItem = (item: any) => {
     removeInApi(item.id);
-    setr(true);
+    getUserDetail();
   };
 
-  const handleQuantityChange = (item: any, type) => {
+  const handleQuantityChange = (item: any, type: string) => {
     const newCartItems = [...data.data];
     // console.log(newCartItems);
     const index = newCartItems.findIndex(cartItem => cartItem.id === item.id);
@@ -93,8 +90,7 @@ const CartScreen = () => {
     console.log('Total', total);
   };
 
-  const renderItem = ({item, index}) => {
-    // console.log(index);
+  const renderItem = ({item, index}: any) => {
     return (
       <View style={styles.itemContainer}>
         <Image source={{uri: item.image}} style={styles.itemImage} />
@@ -128,12 +124,9 @@ const CartScreen = () => {
     return <LoadingBar />;
   }
 
-  if (data.data.length == 0) {
-    return <LoadingBar />;
-  }
   if (!data.isLoading) {
     cartList = data.data;
-    const totalvalue = cartList.reduce((acc, item) => {
+    const totalvalue = cartList.reduce((acc: any, item: any) => {
       return acc + parseInt(item.price) * item.qty;
     }, 0);
     totalPrice = totalvalue;
@@ -156,7 +149,9 @@ const CartScreen = () => {
           </View>
         </View>
       ) : (
-        <View></View>
+        <View style={styles.noitem}>
+          <Text style={styles.noitemtext}>Your Cart is empty!</Text>
+        </View>
       )}
     </>
   );
@@ -166,6 +161,16 @@ const styles = StyleSheet.create({
   cartContainer: {
     flex: 0.9,
   },
+  noitem: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  noitemtext: {
+    fontSize: 20,
+    fontWeight: 'bold',
+  },
+
   totalContainer: {
     flex: 0.1,
     flexDirection: 'row',

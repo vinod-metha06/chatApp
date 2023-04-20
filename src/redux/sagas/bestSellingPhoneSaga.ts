@@ -9,7 +9,7 @@ export default function* GetBestSellingPhoneSagas(): any {
   yield put(dispatchBestSellingPhoneLoding());
   try {
     const response = yield getBestSellingPhoneAPI();
-    console.log(response,'res at saga')
+   // console.log(response,'res at saga')
     yield put(dispatchBestSellingPhoneLoaded(response));
     console.log("donee")
   } catch (error) {

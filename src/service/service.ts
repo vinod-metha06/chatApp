@@ -76,7 +76,7 @@ export const getUserAPI = async (data: any) => {
 export const getBestSellingPhoneAPI = async () => {
   const snapshot = await firestore().collection('Products').get();
   const documents = snapshot.docs.map(doc => ({id: doc.id, ...doc.data()}));
-  console.log(documents);
+ // console.log(documents);
   return documents;
 };
 
@@ -129,7 +129,7 @@ export const alreadyAddToCartAPI = async (data: any) => {
 
 export const getCartItemsAPI = async (data: any) => {
   try {
-    console.log(data.id)
+ 
   const snapshot=  await firestore()
     .collection('Cart')
     .where('email', '==', data)

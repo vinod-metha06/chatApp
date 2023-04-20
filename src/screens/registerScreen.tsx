@@ -3,7 +3,7 @@ import React, {  useState } from 'react';
 import { View, TextInput, Button, Alert, TouchableOpacity, Text, StyleSheet, ActivityIndicator } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 import { LoadingBar } from '../components/LoadingBar';
-import { ChatAction } from '../constants/actionConstants';
+import { EcomAction } from '../constants/actionConstants';
 import { dispatchRegister } from '../redux/action';
 import Reducer from '../types/reducer';
 
@@ -30,9 +30,9 @@ const RegisterScreen = () => {
     }
 
     dispatch( dispatchRegister({name:name,email:email,password:password}));
-    // if (response.data == ChatAction.SUCCESS) {
+    // if (response.data == EcomAction.SUCCESS) {
     //   navigation.navigate('HomeScreen');
-    // } else if (response.data == ChatAction.FAIL) {
+    // } else if (response.data == EcomAction.FAIL) {
     //   Alert.alert('Inavalid Credentials');
     // }
   };
@@ -41,7 +41,7 @@ const RegisterScreen = () => {
     return <LoadingBar/>;
   }
 
-  if (response.data!= "" && response.data !=ChatAction.FAIL) {
+  if (response.data!= "" && response.data !=EcomAction.FAIL) {
     navigation.navigate('HomeScreen');
  }
 

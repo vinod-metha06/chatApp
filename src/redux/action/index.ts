@@ -1,9 +1,9 @@
-import { ChatAction } from "../../constants/actionConstants"
+import { EcomAction } from "../../constants/actionConstants"
 
 
 export function dispatchLogin(data:any){
     return {
-        type:ChatAction.LOGIN,
+        type:EcomAction.LOGIN,
         payload:data
     }
 }
@@ -11,14 +11,14 @@ export function dispatchLogin(data:any){
 
 export function dispatchLoginIn(){
     return {
-        type:ChatAction.LOGGING_IN,
+        type:EcomAction.LOGGING_IN,
     }
 }
 
 
 export function dispatchLogged(data:any){
     return {
-        type:ChatAction.LOGGED,
+        type:EcomAction.LOGGED,
         payload:data
      
     }
@@ -27,7 +27,7 @@ export function dispatchLogged(data:any){
 
 export function dispatchLoginError(){
     return {
-        type:ChatAction.LOGIN_ERROR,
+        type:EcomAction.LOGIN_ERROR,
 
     }
 }
@@ -39,7 +39,7 @@ export function dispatchLoginError(){
 
 export function dispatchRegister(data:any){
     return {
-        type:ChatAction.REGISTER,
+        type:EcomAction.REGISTER,
         payload:data
     }
 }
@@ -47,14 +47,14 @@ export function dispatchRegister(data:any){
 
 export function dispatchRegistering(){
     return {
-        type:ChatAction.REGISTERING,
+        type:EcomAction.REGISTERING,
     }
 }
 
 
 export function dispatchRegistered(data:any){
     return {
-        type:ChatAction.REGISTERED,
+        type:EcomAction.REGISTERED,
         payload:data
      
     }
@@ -63,7 +63,7 @@ export function dispatchRegistered(data:any){
 
 export function dispatchRegistrationError(){
     return {
-        type:ChatAction.REGISTRATION_ERROR,
+        type:EcomAction.REGISTRATION_ERROR,
 
     }
 
@@ -75,7 +75,7 @@ export function dispatchRegistrationError(){
 
 export function dispatchGetUser(data:any){
     return {
-        type:ChatAction.GETUSER,
+        type:EcomAction.GETUSER,
         payload:data
     }
 }
@@ -83,14 +83,14 @@ export function dispatchGetUser(data:any){
 
 export function dispatchGetUserLoading(){
     return {
-        type:ChatAction.GETUSER_LODING,
+        type:EcomAction.GETUSER_LODING,
     }
 }
 
 
 export function dispatchGetUserLoaded(data:any){
     return {
-        type:ChatAction.GETUSER_LODED,
+        type:EcomAction.GETUSER_LODED,
         payload:data
      
     }
@@ -99,7 +99,7 @@ export function dispatchGetUserLoaded(data:any){
 
 export function dispatchGetUserLoadingError(){
     return {
-        type:ChatAction.GETUSER_LODING_ERROR,
+        type:EcomAction.GETUSER_LODING_ERROR,
 
     }
 
@@ -111,7 +111,7 @@ export function dispatchGetUserLoadingError(){
 
 export function dispatchGetCategories(data:any){
     return {
-        type:ChatAction.GETCATEGORIES,
+        type:EcomAction.GETCATEGORIES,
         payload:data
     }
 }
@@ -119,14 +119,14 @@ export function dispatchGetCategories(data:any){
 
 export function dispatchGetCategoriesLoading(){
     return {
-        type:ChatAction.GETCATEGORIES_LODING,
+        type:EcomAction.GETCATEGORIES_LODING,
     }
 }
 
 
 export function dispatchGetCategoriesLoaded(data:any){
     return {
-        type:ChatAction.GETCATEGORIES_LODED,
+        type:EcomAction.GETCATEGORIES_LODED,
         payload:data
      
     }
@@ -135,7 +135,7 @@ export function dispatchGetCategoriesLoaded(data:any){
 
 export function dispatchGetCategoriesLoadingError(){
     return {
-        type:ChatAction.GETCATEGORIES_LODING_ERROR,
+        type:EcomAction.GETCATEGORIES_LODING_ERROR,
 
     }
 
@@ -144,28 +144,28 @@ export function dispatchGetCategoriesLoadingError(){
 
 export function getBestSellingPhones(){
     return{
-        type:ChatAction.GET_BEST_SELLINGS_PHONE,
+        type:EcomAction.GET_BEST_SELLINGS_PHONE,
        
     }
 }
 
 export function dispatchBestSellingPhoneLoding(){
     return{
-        type:ChatAction.BEST_SELLINGS_LOADING
+        type:EcomAction.BEST_SELLINGS_LOADING
     }
 }
 
 
 export function dispatchBestSellingPhoneLoaded(response:any){
     return{
-        type:ChatAction.BEST_SELLINGS_LOADED,
+        type:EcomAction.BEST_SELLINGS_LOADED,
         payload:response
     }
 }
 
 export function dispatchBestSellingPhoneLoadingError(){
     return{
-        type:ChatAction.BEST_SELLINGS_LOADING_ERROR,
+        type:EcomAction.BEST_SELLINGS_LOADING_ERROR,
       
     }
 }
@@ -173,7 +173,7 @@ export function dispatchBestSellingPhoneLoadingError(){
 
 export function dispatchAddToCart(data:any){
     return {
-        type:ChatAction.ADD_TO_CART,
+        type:EcomAction.ADD_TO_CART,
         payload:data
     }
 }
@@ -181,14 +181,14 @@ export function dispatchAddToCart(data:any){
 
 export function dispatchAddToCartLoading(){
     return {
-        type:ChatAction.ADD_TO_CART_LOADING,
+        type:EcomAction.ADD_TO_CART_LOADING,
       
     }
 }
 
 export function dispatchAddToCartLoaded(data:any){
     return {
-        type:ChatAction.ADD_TO_CART_LOADED,
+        type:EcomAction.ADD_TO_CART_LOADED,
         payload:data
       
     }
@@ -196,14 +196,14 @@ export function dispatchAddToCartLoaded(data:any){
 
 export function dispatchAddToCartLoadingError(){
     return {
-        type:ChatAction.ADD_TO_CART_LOADING_ERROR,
+        type:EcomAction.ADD_TO_CART_LOADING_ERROR,
       
     }
 }
 
 export function dispatchAlreadyAddToCart(data:any){
     return {
-        type:ChatAction.ALREADY_ADD_TO_CART,
+        type:EcomAction.ALREADY_ADD_TO_CART,
         payload:data
     }
 }
@@ -211,14 +211,14 @@ export function dispatchAlreadyAddToCart(data:any){
 
 export function dispatchAlreadyAddToCartLoading(){
     return {
-        type:ChatAction.ALREADY_ADD_TO_CART_LOADING,
+        type:EcomAction.ALREADY_ADD_TO_CART_LOADING,
       
     }
 }
 
 export function dispatchAlreadyAddToCartLoaded(data:any){
     return {
-        type:ChatAction.ALREADY_ADD_TO_CART_LOADED,
+        type:EcomAction.ALREADY_ADD_TO_CART_LOADED,
         payload:data
       
     }
@@ -226,7 +226,7 @@ export function dispatchAlreadyAddToCartLoaded(data:any){
 
 export function dispatchAlreadyAddToCartLoadingError(){
     return {
-        type:ChatAction.ALREADY_ADD_TO_CART_LOADING_ERROR,
+        type:EcomAction.ALREADY_ADD_TO_CART_LOADING_ERROR,
       
     }
 }
@@ -238,7 +238,7 @@ export function dispatchAlreadyAddToCartLoadingError(){
 
 export function dispatchGetCartItem(data:any){
     return {
-        type:ChatAction.GET_CART_ITEM,
+        type:EcomAction.GET_CART_ITEM,
         payload:data
     }
 }
@@ -246,14 +246,14 @@ export function dispatchGetCartItem(data:any){
 
 export function dispatchGetCartItemLoading(){
     return {
-        type:ChatAction.GET_CART_ITEM_LOADING,
+        type:EcomAction.GET_CART_ITEM_LOADING,
       
     }
 }
 
 export function dispatchGetCartItemLoaded(data:any){
     return {
-        type:ChatAction.GET_CART_ITEM_LOADED,
+        type:EcomAction.GET_CART_ITEM_LOADED,
         payload:data
       
     }
@@ -261,14 +261,14 @@ export function dispatchGetCartItemLoaded(data:any){
 
 export function dispatchGetCartItemLoadingError(){
     return {
-        type:ChatAction.GET_CART_ITEM_LOADING_ERROR,
+        type:EcomAction.GET_CART_ITEM_LOADING_ERROR,
       
     }
 }
 
 export function dispatchUpdateQty(data:any){
     return {
-        type:ChatAction.UPDATEQTY,
+        type:EcomAction.UPDATEQTY,
         payload:data
       
     }

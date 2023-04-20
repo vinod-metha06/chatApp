@@ -1,5 +1,5 @@
 import {takeEvery,take,takeLatest} from 'redux-saga/effects';
-import { ChatAction } from '../constants/actionConstants';
+import { EcomAction } from '../constants/actionConstants';
 import addToCartSagas from './sagas/addToCartSaga';
 import alreadyAddToCartSagas from './sagas/alreadyaddedToCartSaga';
 import GetBestSellingPhoneSagas from './sagas/bestSellingPhoneSaga';
@@ -11,13 +11,13 @@ import registerSaga from './sagas/registersaga';
 
 
 export default function* RootSaga(){
-    yield takeEvery(ChatAction.LOGIN,loginSaga);
-    yield takeEvery(ChatAction.REGISTER,registerSaga);
-    yield takeEvery(ChatAction.GETUSER,getUserSaga);
-    yield takeEvery(ChatAction.GET_BEST_SELLINGS_PHONE,GetBestSellingPhoneSagas);
-    yield takeEvery(ChatAction.ADD_TO_CART,addToCartSagas);
-    yield takeEvery(ChatAction.ALREADY_ADD_TO_CART,alreadyAddToCartSagas);
-    yield takeEvery(ChatAction.GET_CART_ITEM,geCartItemSaga);
-    yield takeEvery(ChatAction.GETCATEGORIES,GetCategoriesSagas);
+    yield takeEvery(EcomAction.LOGIN,loginSaga);
+    yield takeEvery(EcomAction.REGISTER,registerSaga);
+    yield takeEvery(EcomAction.GETUSER,getUserSaga);
+    yield takeEvery(EcomAction.GET_BEST_SELLINGS_PHONE,GetBestSellingPhoneSagas);
+    yield takeEvery(EcomAction.ADD_TO_CART,addToCartSagas);
+    yield takeEvery(EcomAction.ALREADY_ADD_TO_CART,alreadyAddToCartSagas);
+    yield takeEvery(EcomAction.GET_CART_ITEM,geCartItemSaga);
+    yield takeEvery(EcomAction.GETCATEGORIES,GetCategoriesSagas);
     
 }
